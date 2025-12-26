@@ -1,0 +1,258 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"init.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/init.c"
+  20              		.section	.text.GPIO_Init_Macros_GPIOB_GPIOC_GPIOD,"ax",%progbits
+  21              		.align	1
+  22              		.global	GPIO_Init_Macros_GPIOB_GPIOC_GPIOD
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	GPIO_Init_Macros_GPIOB_GPIOC_GPIOD:
+  28              	.LFB130:
+   1:Core/Src/init.c **** #include "../Inc/init.h"
+   2:Core/Src/init.c **** 
+   3:Core/Src/init.c **** void GPIO_Init_Macros_GPIOB_GPIOC_GPIOD(void){
+  29              		.loc 1 3 46 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   4:Core/Src/init.c ****     BIT_SET(RCC_AHB1ENR, RCC_GPIOB_EN | RCC_GPIOC_EN | RCC_GPIOD_EN | RCC_GPIOF_EN );   
+  34              		.loc 1 4 5 view .LVU1
+  35 0000 144A     		ldr	r2, .L2
+  36 0002 D2F83038 		ldr	r3, [r2, #2096]
+  37 0006 43F03E03 		orr	r3, r3, #62
+  38 000a C2F83038 		str	r3, [r2, #2096]
+   5:Core/Src/init.c **** 
+   6:Core/Src/init.c ****     BIT_SET(GPIOB_MODER, GPIO_OUTPUT_MODE_PIN_0 | GPIO_OUTPUT_MODE_PIN_14);        
+  39              		.loc 1 6 5 view .LVU2
+  40 000e 124B     		ldr	r3, .L2+4
+  41 0010 D3F80024 		ldr	r2, [r3, #1024]
+  42 0014 42F08052 		orr	r2, r2, #268435456
+  43 0018 42F00102 		orr	r2, r2, #1
+  44 001c C3F80024 		str	r2, [r3, #1024]
+   7:Core/Src/init.c ****     BIT_CLEAR(GPIOB_OTYPER, GPIO_PP_PIN_0 | GPIO_PP_PIN_14);              
+  45              		.loc 1 7 5 view .LVU3
+  46 0020 D3F80424 		ldr	r2, [r3, #1028]
+  47 0024 22F48042 		bic	r2, r2, #16384
+  48 0028 22F00102 		bic	r2, r2, #1
+  49 002c C3F80424 		str	r2, [r3, #1028]
+   8:Core/Src/init.c ****     BIT_SET(GPIOB_OSPEEDR, GPIO_SPEED_MEDIUM_PIN_0 | GPIO_SPEED_MEDIUM_PIN_14);        
+  50              		.loc 1 8 5 view .LVU4
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s 			page 2
+
+
+  51 0030 D3F80824 		ldr	r2, [r3, #1032]
+  52 0034 42F08052 		orr	r2, r2, #268435456
+  53 0038 42F00102 		orr	r2, r2, #1
+  54 003c C3F80824 		str	r2, [r3, #1032]
+   9:Core/Src/init.c ****   
+  10:Core/Src/init.c ****     BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_0 | GPIO_PIN_RESET_14);         
+  55              		.loc 1 10 5 view .LVU5
+  56 0040 D3F81824 		ldr	r2, [r3, #1048]
+  57 0044 42F08042 		orr	r2, r2, #1073741824
+  58 0048 42F48032 		orr	r2, r2, #65536
+  59 004c C3F81824 		str	r2, [r3, #1048]
+  11:Core/Src/init.c **** }
+  60              		.loc 1 11 1 is_stmt 0 view .LVU6
+  61 0050 7047     		bx	lr
+  62              	.L3:
+  63 0052 00BF     		.align	2
+  64              	.L2:
+  65 0054 00300240 		.word	1073885184
+  66 0058 00000240 		.word	1073872896
+  67              		.cfi_endproc
+  68              	.LFE130:
+  70              		.section	.text.GPIO_Init_GPIOB7,"ax",%progbits
+  71              		.align	1
+  72              		.global	GPIO_Init_GPIOB7
+  73              		.syntax unified
+  74              		.thumb
+  75              		.thumb_func
+  77              	GPIO_Init_GPIOB7:
+  78              	.LFB131:
+  12:Core/Src/init.c **** 
+  13:Core/Src/init.c **** void GPIO_Init_GPIOB7(void){
+  79              		.loc 1 13 28 is_stmt 1 view -0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  14:Core/Src/init.c ****      //*(uint32_t *)(0x40023800UL + 0x30UL) |= 0x08UL;
+  15:Core/Src/init.c ****      
+  16:Core/Src/init.c ****      *(uint32_t *)(0x40020400UL + 0x00UL) |=  0x4000UL;
+  84              		.loc 1 16 6 view .LVU8
+  85 0000 0C4B     		ldr	r3, .L5
+  86 0002 D3F80024 		ldr	r2, [r3, #1024]
+  87              		.loc 1 16 43 is_stmt 0 view .LVU9
+  88 0006 42F48042 		orr	r2, r2, #16384
+  89 000a C3F80024 		str	r2, [r3, #1024]
+  17:Core/Src/init.c ****      *(uint32_t *)(0x40020400UL + 0x04UL) &= ~0x80UL;
+  90              		.loc 1 17 6 is_stmt 1 view .LVU10
+  91 000e D3F80424 		ldr	r2, [r3, #1028]
+  92              		.loc 1 17 43 is_stmt 0 view .LVU11
+  93 0012 22F08002 		bic	r2, r2, #128
+  94 0016 C3F80424 		str	r2, [r3, #1028]
+  18:Core/Src/init.c ****      *(uint32_t *)(0x40020400UL + 0x08UL) |= 0x4000UL;
+  95              		.loc 1 18 6 is_stmt 1 view .LVU12
+  96 001a D3F80824 		ldr	r2, [r3, #1032]
+  97              		.loc 1 18 43 is_stmt 0 view .LVU13
+  98 001e 42F48042 		orr	r2, r2, #16384
+  99 0022 C3F80824 		str	r2, [r3, #1032]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s 			page 3
+
+
+  19:Core/Src/init.c **** 
+  20:Core/Src/init.c ****      *(uint32_t *)(0x40020400UL + 0x18UL) |= 0x800000UL;
+ 100              		.loc 1 20 6 is_stmt 1 view .LVU14
+ 101 0026 D3F81824 		ldr	r2, [r3, #1048]
+ 102              		.loc 1 20 43 is_stmt 0 view .LVU15
+ 103 002a 42F40002 		orr	r2, r2, #8388608
+ 104 002e C3F81824 		str	r2, [r3, #1048]
+  21:Core/Src/init.c **** }
+ 105              		.loc 1 21 1 view .LVU16
+ 106 0032 7047     		bx	lr
+ 107              	.L6:
+ 108              		.align	2
+ 109              	.L5:
+ 110 0034 00000240 		.word	1073872896
+ 111              		.cfi_endproc
+ 112              	.LFE131:
+ 114              		.section	.text.GPIO_Init_CMSIS_GPIOF_INPUT,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	GPIO_Init_CMSIS_GPIOF_INPUT
+ 117              		.syntax unified
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	GPIO_Init_CMSIS_GPIOF_INPUT:
+ 122              	.LFB132:
+  22:Core/Src/init.c **** 
+  23:Core/Src/init.c **** void GPIO_Init_CMSIS_GPIOF_INPUT(void){
+ 123              		.loc 1 23 39 is_stmt 1 view -0
+ 124              		.cfi_startproc
+ 125              		@ args = 0, pretend = 0, frame = 0
+ 126              		@ frame_needed = 0, uses_anonymous_args = 0
+ 127              		@ link register save eliminated.
+  24:Core/Src/init.c ****     //SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOFEN);
+  25:Core/Src/init.c **** 
+  26:Core/Src/init.c ****     CLEAR_BIT(GPIOF->PUPDR, GPIO_PUPDR_PUPD12_0);
+ 128              		.loc 1 26 5 view .LVU18
+ 129 0000 064B     		ldr	r3, .L8
+ 130 0002 DA68     		ldr	r2, [r3, #12]
+ 131 0004 22F08072 		bic	r2, r2, #16777216
+ 132 0008 DA60     		str	r2, [r3, #12]
+  27:Core/Src/init.c ****     CLEAR_BIT(GPIOF->MODER, GPIO_MODER_MODE12_0);
+ 133              		.loc 1 27 5 view .LVU19
+ 134 000a 1A68     		ldr	r2, [r3]
+ 135 000c 22F08072 		bic	r2, r2, #16777216
+ 136 0010 1A60     		str	r2, [r3]
+  28:Core/Src/init.c ****     CLEAR_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDER_OSPEEDR12_0);
+ 137              		.loc 1 28 5 view .LVU20
+ 138 0012 9A68     		ldr	r2, [r3, #8]
+ 139 0014 22F08072 		bic	r2, r2, #16777216
+ 140 0018 9A60     		str	r2, [r3, #8]
+  29:Core/Src/init.c **** 
+  30:Core/Src/init.c **** 
+  31:Core/Src/init.c **** }
+ 141              		.loc 1 31 1 is_stmt 0 view .LVU21
+ 142 001a 7047     		bx	lr
+ 143              	.L9:
+ 144              		.align	2
+ 145              	.L8:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s 			page 4
+
+
+ 146 001c 00140240 		.word	1073878016
+ 147              		.cfi_endproc
+ 148              	.LFE132:
+ 150              		.section	.text.GPIO_Init_CMSIS_GPIOF_OUTPUT,"ax",%progbits
+ 151              		.align	1
+ 152              		.global	GPIO_Init_CMSIS_GPIOF_OUTPUT
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	GPIO_Init_CMSIS_GPIOF_OUTPUT:
+ 158              	.LFB133:
+  32:Core/Src/init.c **** 
+  33:Core/Src/init.c **** void GPIO_Init_CMSIS_GPIOF_OUTPUT(void){
+ 159              		.loc 1 33 40 is_stmt 1 view -0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+  34:Core/Src/init.c ****     //SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOFEN);
+  35:Core/Src/init.c **** 
+  36:Core/Src/init.c ****     SET_BIT(GPIOF->MODER, GPIO_MODER_MODE12_0);
+ 164              		.loc 1 36 5 view .LVU23
+ 165 0000 084B     		ldr	r3, .L11
+ 166 0002 1A68     		ldr	r2, [r3]
+ 167 0004 42F08072 		orr	r2, r2, #16777216
+ 168 0008 1A60     		str	r2, [r3]
+  37:Core/Src/init.c ****     CLEAR_BIT(GPIOF->OTYPER, GPIO_OTYPER_OT12);
+ 169              		.loc 1 37 5 view .LVU24
+ 170 000a 5A68     		ldr	r2, [r3, #4]
+ 171 000c 22F48052 		bic	r2, r2, #4096
+ 172 0010 5A60     		str	r2, [r3, #4]
+  38:Core/Src/init.c ****     SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDER_OSPEEDR12_0);
+ 173              		.loc 1 38 5 view .LVU25
+ 174 0012 9A68     		ldr	r2, [r3, #8]
+ 175 0014 42F08072 		orr	r2, r2, #16777216
+ 176 0018 9A60     		str	r2, [r3, #8]
+  39:Core/Src/init.c **** 
+  40:Core/Src/init.c ****     CLEAR_BIT(GPIOF->PUPDR, GPIO_PUPDR_PUPD12_0);
+ 177              		.loc 1 40 5 view .LVU26
+ 178 001a DA68     		ldr	r2, [r3, #12]
+ 179 001c 22F08072 		bic	r2, r2, #16777216
+ 180 0020 DA60     		str	r2, [r3, #12]
+  41:Core/Src/init.c **** }...
+ 181              		.loc 1 41 1 is_stmt 0 view .LVU27
+ 182 0022 7047     		bx	lr
+ 183              	.L12:
+ 184              		.align	2
+ 185              	.L11:
+ 186 0024 00140240 		.word	1073878016
+ 187              		.cfi_endproc
+ 188              	.LFE133:
+ 190              		.text
+ 191              	.Letext0:
+ 192              		.file 2 "C:/Users/Admin/Desktop/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1/arm-none-eabi/include/mac
+ 193              		.file 3 "C:/Users/Admin/Desktop/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1/arm-none-eabi/include/sys
+ 194              		.file 4 "CMSIS/Devices/STM32F4xx/Inc/STM32F429xx/stm32f429xx.h"
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:21     .text.GPIO_Init_Macros_GPIOB_GPIOC_GPIOD:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:27     .text.GPIO_Init_Macros_GPIOB_GPIOC_GPIOD:00000000 GPIO_Init_Macros_GPIOB_GPIOC_GPIOD
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:65     .text.GPIO_Init_Macros_GPIOB_GPIOC_GPIOD:00000054 $d
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:71     .text.GPIO_Init_GPIOB7:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:77     .text.GPIO_Init_GPIOB7:00000000 GPIO_Init_GPIOB7
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:110    .text.GPIO_Init_GPIOB7:00000034 $d
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:115    .text.GPIO_Init_CMSIS_GPIOF_INPUT:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:121    .text.GPIO_Init_CMSIS_GPIOF_INPUT:00000000 GPIO_Init_CMSIS_GPIOF_INPUT
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:146    .text.GPIO_Init_CMSIS_GPIOF_INPUT:0000001c $d
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:151    .text.GPIO_Init_CMSIS_GPIOF_OUTPUT:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:157    .text.GPIO_Init_CMSIS_GPIOF_OUTPUT:00000000 GPIO_Init_CMSIS_GPIOF_OUTPUT
+C:\Users\Admin\AppData\Local\Temp\cchf1vqw.s:186    .text.GPIO_Init_CMSIS_GPIOF_OUTPUT:00000024 $d
+
+NO UNDEFINED SYMBOLS

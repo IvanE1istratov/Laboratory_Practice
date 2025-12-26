@@ -1,0 +1,624 @@
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/main.c"
+  20              		.section	.text.main,"ax",%progbits
+  21              		.align	1
+  22              		.global	main
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	main:
+  28              	.LFB0:
+   1:Core/Src/main.c **** // #include "../Inc/init.h"
+   2:Core/Src/main.c **** // uint32_t ChaterTimeCounter_GPIOC_8 = 0;
+   3:Core/Src/main.c **** // uint8_t flag_GPIOF_12 = 0;
+   4:Core/Src/main.c **** 
+   5:Core/Src/main.c **** // int main(void)
+   6:Core/Src/main.c **** // {
+   7:Core/Src/main.c **** 
+   8:Core/Src/main.c ****  
+   9:Core/Src/main.c **** //     GPIO_Init_Macros_GPIOB_GPIOC_GPIOD();
+  10:Core/Src/main.c **** //     GPIO_Init_GPIOB7();
+  11:Core/Src/main.c **** //     GPIO_Init_CMSIS_GPIOF_OUTPUT();
+  12:Core/Src/main.c ****  
+  13:Core/Src/main.c **** //     while (1)
+  14:Core/Src/main.c **** //     {
+  15:Core/Src/main.c **** //         //Для кнопки 1
+  16:Core/Src/main.c **** //         if(BIT_READ(GPIOC_IDR, GPIO_PIN_8)){
+  17:Core/Src/main.c **** //             BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_14); // Включение пина PB7
+  18:Core/Src/main.c **** //             if (flag_GPIOF_12 != 0){
+  19:Core/Src/main.c **** //                 CLEAR_BIT(GPIOF->PUPDR, GPIO_PUPDR_PUPD12_0);
+  20:Core/Src/main.c **** //                 CLEAR_BIT(GPIOF->MODER, GPIO_MODER_MODE12_0);
+  21:Core/Src/main.c **** //                 CLEAR_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDER_OSPEEDR12_0);
+  22:Core/Src/main.c **** //                 flag_GPIOF_12 = 0;   
+  23:Core/Src/main.c **** //             }
+  24:Core/Src/main.c **** //         }
+  25:Core/Src/main.c **** //         else{
+  26:Core/Src/main.c **** //             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14); // Включение пина PB7
+  27:Core/Src/main.c **** //         }
+  28:Core/Src/main.c **** 
+  29:Core/Src/main.c **** 
+  30:Core/Src/main.c **** //         //Для кнопки 2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 2
+
+
+  31:Core/Src/main.c **** //         if(BIT_READ(GPIOD_IDR, GPIO_PIN_3)){
+  32:Core/Src/main.c **** //             BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_7); // Включение пина PB7
+  33:Core/Src/main.c **** //             if (flag_GPIOF_12 != 1){
+  34:Core/Src/main.c **** //                 SET_BIT(GPIOF->MODER, GPIO_MODER_MODE12_0);
+  35:Core/Src/main.c **** //                 CLEAR_BIT(GPIOF->OTYPER, GPIO_OTYPER_OT12);
+  36:Core/Src/main.c **** //                 SET_BIT(GPIOF->OSPEEDR, GPIO_OSPEEDER_OSPEEDR12_0);
+  37:Core/Src/main.c **** 
+  38:Core/Src/main.c **** //                 CLEAR_BIT(GPIOF->PUPDR, GPIO_PUPDR_PUPD12_0);
+  39:Core/Src/main.c **** //                 flag_GPIOF_12 = 1;
+  40:Core/Src/main.c **** //             }
+  41:Core/Src/main.c **** //         }
+  42:Core/Src/main.c **** //         else{
+  43:Core/Src/main.c **** //             BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_7); // Включение пина PB7
+  44:Core/Src/main.c **** //         }
+  45:Core/Src/main.c **** 
+  46:Core/Src/main.c **** 
+  47:Core/Src/main.c **** //         //Кнопка/лампа F12
+  48:Core/Src/main.c **** //         if(flag_GPIOF_12 == 0){
+  49:Core/Src/main.c **** //             if(BIT_READ(GPIOF_IDR, GPIO_PIN_12)){
+  50:Core/Src/main.c **** //                 BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_0); // Включение пина PB7
+  51:Core/Src/main.c **** //             }
+  52:Core/Src/main.c **** //             else{
+  53:Core/Src/main.c **** //                 BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_0); // Включение пина PB7
+  54:Core/Src/main.c **** //             }
+  55:Core/Src/main.c **** 
+  56:Core/Src/main.c **** //         }
+  57:Core/Src/main.c **** //         if(flag_GPIOF_12 == 1){
+  58:Core/Src/main.c **** //             BIT_SET(GPIOF_BSRR, GPIO_PIN_SET_12); // Включение пина PB7
+  59:Core/Src/main.c **** //         }
+  60:Core/Src/main.c **** //         else{
+  61:Core/Src/main.c **** //             BIT_SET(GPIOF_BSRR, GPIO_PIN_RESET_12); // Включение пина PB7
+  62:Core/Src/main.c **** //         }
+  63:Core/Src/main.c **** //         // if(BIT_READ(GPIOC_IDR, GPIO_PIN_13)){
+  64:Core/Src/main.c **** //         //     flag_GPIOF_12 = 1;
+  65:Core/Src/main.c **** //         //     ChaterTimeCounter_GPIOC_8 = 2000;
+  66:Core/Src/main.c **** //         // }
+  67:Core/Src/main.c **** //         // else if(ChaterTimeCounter_GPIOC_8 == 0){
+  68:Core/Src/main.c **** //         //     flag_GPIOF_12 = 0;
+  69:Core/Src/main.c **** //         // }
+  70:Core/Src/main.c **** //         // else if(ChaterTimeCounter_GPIOC_8 > 0){
+  71:Core/Src/main.c **** //         //     ChaterTimeCounter_GPIOC_8 = ChaterTimeCounter_GPIOC_8 - 1;
+  72:Core/Src/main.c **** //         // }
+  73:Core/Src/main.c **** //         // if(flag_GPIOF_12 == 1){
+  74:Core/Src/main.c **** //         //     BIT_SET(GPIOB_BSRR, GPIO_PIN_SET_14); // Включение пина PB7
+  75:Core/Src/main.c **** //         // }
+  76:Core/Src/main.c **** //         // else{
+  77:Core/Src/main.c **** //         //     BIT_SET(GPIOB_BSRR, GPIO_PIN_RESET_14); // Включение пина PB7
+  78:Core/Src/main.c **** //         // }
+  79:Core/Src/main.c **** 
+  80:Core/Src/main.c **** //    }
+  81:Core/Src/main.c **** // }
+  82:Core/Src/main.c **** 
+  83:Core/Src/main.c **** #include <stdint.h>
+  84:Core/Src/main.c **** uint8_t mode = 0; // 0 = включаем, 1 = выключаем
+  85:Core/Src/main.c **** uint8_t step = 0; // шаг
+  86:Core/Src/main.c **** uint8_t prev_btn1 = 1;
+  87:Core/Src/main.c **** uint8_t prev_btn2 = 1;
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 3
+
+
+  88:Core/Src/main.c **** 
+  89:Core/Src/main.c **** int main(void)
+  90:Core/Src/main.c **** {
+  29              		.loc 1 90 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  91:Core/Src/main.c ****     // ======================================================
+  92:Core/Src/main.c ****     // 1. Включение тактирования GPIOB (бит1), GPIOC (бит2), в конц
+  93:Core/Src/main.c ****     *(uint32_t *)(0x40023800UL + 0x30UL) |= 0x06UL;
+  34              		.loc 1 93 5 view .LVU1
+  35 0000 5C4A     		ldr	r2, .L15
+  36 0002 D2F83038 		ldr	r3, [r2, #2096]
+  37              		.loc 1 93 42 is_stmt 0 view .LVU2
+  38 0006 43F00603 		orr	r3, r3, #6
+  39 000a C2F83038 		str	r3, [r2, #2096]
+  94:Core/Src/main.c **** 
+  95:Core/Src/main.c ****     // ======================================================
+  96:Core/Src/main.c ****     // 2. PВ12, PB5, PB8 — подключение светодиодов на выход - Outpu
+  97:Core/Src/main.c ****     // MODER: каждые 2 бита = режим
+  98:Core/Src/main.c ****     // PB8  = биты 16:17   → 01 : маска 0x010000
+  99:Core/Src/main.c ****     // PB5  = биты 10:11 → 01 : маска 0x0400
+ 100:Core/Src/main.c ****     // PB12 = биты 24:25 → 01 : маска 0x01000000
+ 101:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x00UL) |= 0x010000UL;
+  40              		.loc 1 101 5 is_stmt 1 view .LVU3
+  41 000e 5A4B     		ldr	r3, .L15+4
+  42 0010 D3F80024 		ldr	r2, [r3, #1024]
+  43              		.loc 1 101 42 is_stmt 0 view .LVU4
+  44 0014 42F48031 		orr	r1, r2, #65536
+  45 0018 C3F80014 		str	r1, [r3, #1024]
+ 102:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x00UL) |= 0x0400UL;
+  46              		.loc 1 102 5 is_stmt 1 view .LVU5
+  47              		.loc 1 102 42 is_stmt 0 view .LVU6
+  48 001c 42F48231 		orr	r1, r2, #66560
+  49 0020 C3F80014 		str	r1, [r3, #1024]
+ 103:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x00UL) |= 0x01000000UL;
+  50              		.loc 1 103 5 is_stmt 1 view .LVU7
+  51              		.loc 1 103 42 is_stmt 0 view .LVU8
+  52 0024 42F08072 		orr	r2, r2, #16777216
+  53 0028 42F48232 		orr	r2, r2, #66560
+  54 002c C3F80024 		str	r2, [r3, #1024]
+ 104:Core/Src/main.c **** 
+ 105:Core/Src/main.c ****     // OTYPER: все пины — push-pull (бит = 0)
+ 106:Core/Src/main.c ****     // PB8  = бит 8 → 0 : маска
+ 107:Core/Src/main.c ****     // PB5  = бит 5 → 0 : маска 0x20
+ 108:Core/Src/main.c ****     // PB12 = бит 12 → 0 : маска 0x1000
+ 109:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x04UL) &= ~(0x0100UL);
+  55              		.loc 1 109 5 is_stmt 1 view .LVU9
+  56 0030 D3F80424 		ldr	r2, [r3, #1028]
+  57              		.loc 1 109 42 is_stmt 0 view .LVU10
+  58 0034 22F48071 		bic	r1, r2, #256
+  59 0038 C3F80414 		str	r1, [r3, #1028]
+ 110:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x04UL) &= ~(0x20UL);
+  60              		.loc 1 110 5 is_stmt 1 view .LVU11
+  61              		.loc 1 110 42 is_stmt 0 view .LVU12
+  62 003c 22F49071 		bic	r1, r2, #288
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 4
+
+
+  63 0040 C3F80414 		str	r1, [r3, #1028]
+ 111:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x04UL) &= ~(0x1000UL);
+  64              		.loc 1 111 5 is_stmt 1 view .LVU13
+  65              		.loc 1 111 42 is_stmt 0 view .LVU14
+  66 0044 22F48952 		bic	r2, r2, #4384
+  67 0048 C3F80424 		str	r2, [r3, #1028]
+ 112:Core/Src/main.c **** 
+ 113:Core/Src/main.c ****     // OSPEEDR: medium speed - средняя скорость → 01
+ 114:Core/Src/main.c ****     // PB8  = биты 16:17 → 01 : маска 0x010000
+ 115:Core/Src/main.c ****     // PB5  = биты 10:11 → 01 : маска 0x0400
+ 116:Core/Src/main.c ****     // PB12 = биты 24:25 → 01 : маска 0x01000000
+ 117:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x08UL) |= 0x010000UL;
+  68              		.loc 1 117 5 is_stmt 1 view .LVU15
+  69 004c D3F80824 		ldr	r2, [r3, #1032]
+  70              		.loc 1 117 42 is_stmt 0 view .LVU16
+  71 0050 42F48031 		orr	r1, r2, #65536
+  72 0054 C3F80814 		str	r1, [r3, #1032]
+ 118:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x08UL) |= 0x0400UL;
+  73              		.loc 1 118 5 is_stmt 1 view .LVU17
+  74              		.loc 1 118 42 is_stmt 0 view .LVU18
+  75 0058 42F48231 		orr	r1, r2, #66560
+  76 005c C3F80814 		str	r1, [r3, #1032]
+ 119:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x08UL) |= 0x01000000UL;
+  77              		.loc 1 119 5 is_stmt 1 view .LVU19
+  78              		.loc 1 119 42 is_stmt 0 view .LVU20
+  79 0060 42F08072 		orr	r2, r2, #16777216
+  80 0064 42F48232 		orr	r2, r2, #66560
+  81 0068 C3F80824 		str	r2, [r3, #1032]
+ 120:Core/Src/main.c **** 
+ 121:Core/Src/main.c ****     // PUPDR: без подтяжек → 00
+ 122:Core/Src/main.c ****     // PB8  = биты 16:17 → 00 : маска 0x030000
+ 123:Core/Src/main.c ****     // PB5  = биты 10:11 → 00 : маска 0x0C00
+ 124:Core/Src/main.c ****     // PB12 = биты 24:25 → 00 : маска 0x03000000
+ 125:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x0CUL) &= ~(0x030000UL);
+  82              		.loc 1 125 5 is_stmt 1 view .LVU21
+  83 006c D3F80C24 		ldr	r2, [r3, #1036]
+  84              		.loc 1 125 42 is_stmt 0 view .LVU22
+  85 0070 22F44031 		bic	r1, r2, #196608
+  86 0074 C3F80C14 		str	r1, [r3, #1036]
+ 126:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x0CUL) &= ~(0x0C00UL);
+  87              		.loc 1 126 5 is_stmt 1 view .LVU23
+  88              		.loc 1 126 42 is_stmt 0 view .LVU24
+  89 0078 22F44331 		bic	r1, r2, #199680
+  90 007c C3F80C14 		str	r1, [r3, #1036]
+ 127:Core/Src/main.c ****     *(uint32_t *)(0x40020400UL + 0x0CUL) &= ~(0x03000000UL);
+  91              		.loc 1 127 5 is_stmt 1 view .LVU25
+  92              		.loc 1 127 42 is_stmt 0 view .LVU26
+  93 0080 22F04072 		bic	r2, r2, #50331648
+  94 0084 22F44332 		bic	r2, r2, #199680
+  95 0088 C3F80C24 		str	r2, [r3, #1036]
+ 128:Core/Src/main.c **** 
+ 129:Core/Src/main.c ****     // ======================================================
+ 130:Core/Src/main.c ****     // 3. Кнопка 1 - PC7 — подключение на вход - Input mode
+ 131:Core/Src/main.c ****     // PC7 = биты 14:15 → 00 : маска 0xC000
+ 132:Core/Src/main.c ****     *(uint32_t *)(0x40020800UL + 0x00UL) &= ~(0xC000UL);
+  96              		.loc 1 132 5 is_stmt 1 view .LVU27
+  97 008c D3F80018 		ldr	r1, [r3, #2048]
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 5
+
+
+  98              		.loc 1 132 42 is_stmt 0 view .LVU28
+  99 0090 21F44042 		bic	r2, r1, #49152
+ 100 0094 C3F80028 		str	r2, [r3, #2048]
+ 133:Core/Src/main.c **** 
+ 134:Core/Src/main.c ****     // PUPDR: подтяжка Кнопки 1 → Pull-up
+ 135:Core/Src/main.c ****     // PC7 = биты 14:15 → 01 : маска 0x4000
+ 136:Core/Src/main.c ****     *(uint32_t *)(0x40020800UL + 0x0CUL) |= 0x4000UL;
+ 101              		.loc 1 136 5 is_stmt 1 view .LVU29
+ 102 0098 D3F80C28 		ldr	r2, [r3, #2060]
+ 103              		.loc 1 136 42 is_stmt 0 view .LVU30
+ 104 009c 42F48040 		orr	r0, r2, #16384
+ 105 00a0 C3F80C08 		str	r0, [r3, #2060]
+ 137:Core/Src/main.c **** 
+ 138:Core/Src/main.c ****     // ======================================================
+ 139:Core/Src/main.c ****     // 4. Кнопка 2 - PC6 — подключение на вход - Input mode
+ 140:Core/Src/main.c ****     // PC6 = биты 12:13 → 00 : маска
+ 141:Core/Src/main.c **** 
+ 142:Core/Src/main.c ****     *(uint32_t *)(0x40020800UL + 0x00UL) &= ~(0x3000UL);
+ 106              		.loc 1 142 5 is_stmt 1 view .LVU31
+ 107              		.loc 1 142 42 is_stmt 0 view .LVU32
+ 108 00a4 21F47041 		bic	r1, r1, #61440
+ 109 00a8 C3F80018 		str	r1, [r3, #2048]
+ 143:Core/Src/main.c **** 
+ 144:Core/Src/main.c ****     // PUPDR: подтяжка Кнопки 2 → Pull-up
+ 145:Core/Src/main.c ****     // PC6 = биты 12:13 → 01 : маска 0x1000
+ 146:Core/Src/main.c ****     // ======================================================
+ 147:Core/Src/main.c ****     *(uint32_t *)(0x40020800UL + 0x0CUL) |= 0x1000UL;
+ 110              		.loc 1 147 5 is_stmt 1 view .LVU33
+ 111              		.loc 1 147 42 is_stmt 0 view .LVU34
+ 112 00ac 42F4A042 		orr	r2, r2, #20480
+ 113 00b0 C3F80C28 		str	r2, [r3, #2060]
+ 114 00b4 28E0     		b	.L11
+ 115              	.LVL0:
+ 116              	.L13:
+ 117              	.LBB2:
+ 148:Core/Src/main.c **** 
+ 149:Core/Src/main.c ****     // ======================================================
+ 150:Core/Src/main.c ****     // Алгоритм
+ 151:Core/Src/main.c ****     // ======================================================
+ 152:Core/Src/main.c **** 
+ 153:Core/Src/main.c **** 
+ 154:Core/Src/main.c ****     while (1)
+ 155:Core/Src/main.c ****     {
+ 156:Core/Src/main.c ****         // -------------------------------
+ 157:Core/Src/main.c ****         // Кнопка 2 (PС6) — переключает режим (включение/выкл
+ 158:Core/Src/main.c ****         // -------------------------------
+ 159:Core/Src/main.c ****         uint8_t btn2 = (*(uint32_t *)(0x40020800UL + 0x10UL) & 0x40UL) ? 1 : 0;
+ 160:Core/Src/main.c **** 
+ 161:Core/Src/main.c ****         if (prev_btn2 == 1 && btn2 == 0)
+ 118              		.loc 1 161 28 discriminator 1 view .LVU35
+ 119 00b6 82BB     		cbnz	r2, .L2
+ 162:Core/Src/main.c ****         {
+ 163:Core/Src/main.c ****             mode ^= 1; // переключить режим
+ 120              		.loc 1 163 13 is_stmt 1 view .LVU36
+ 121              		.loc 1 163 18 is_stmt 0 view .LVU37
+ 122 00b8 3048     		ldr	r0, .L15+8
+ 123 00ba 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 6
+
+
+ 124 00bc 81F00101 		eor	r1, r1, #1
+ 125 00c0 0170     		strb	r1, [r0]
+ 164:Core/Src/main.c ****             step = 0;  // начать с начала при смене режима
+ 126              		.loc 1 164 13 is_stmt 1 view .LVU38
+ 127              		.loc 1 164 18 is_stmt 0 view .LVU39
+ 128 00c2 2F49     		ldr	r1, .L15+12
+ 129 00c4 0020     		movs	r0, #0
+ 130 00c6 0870     		strb	r0, [r1]
+ 131 00c8 27E0     		b	.L2
+ 132              	.LVL1:
+ 133              	.L5:
+ 165:Core/Src/main.c ****         }
+ 166:Core/Src/main.c ****         prev_btn2 = btn2;
+ 167:Core/Src/main.c **** 
+ 168:Core/Src/main.c ****         // -------------------------------
+ 169:Core/Src/main.c ****         // Кнопка 1 (PC7) — действие - включение светодиодов и
+ 170:Core/Src/main.c ****         // -------------------------------
+ 171:Core/Src/main.c ****         uint8_t btn1 = (*(uint32_t *)(0x40020800UL + 0x10UL) & 0x80UL) ? 1 : 0;
+ 172:Core/Src/main.c **** 
+ 173:Core/Src/main.c ****         if (prev_btn1 == 1 && btn1 == 0)
+ 174:Core/Src/main.c ****         {
+ 175:Core/Src/main.c ****             // ===== включение =====
+ 176:Core/Src/main.c ****             if (mode == 0)
+ 177:Core/Src/main.c ****             {
+ 178:Core/Src/main.c ****                 if (step == 0)
+ 179:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x0100UL;
+ 180:Core/Src/main.c ****                 else if (step == 1)
+ 134              		.loc 1 180 22 is_stmt 1 view .LVU40
+ 135              		.loc 1 180 25 is_stmt 0 view .LVU41
+ 136 00ca 012A     		cmp	r2, #1
+ 137 00cc 07D0     		beq	.L12
+ 181:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x20UL;
+ 182:Core/Src/main.c ****                 else if (step == 2)
+ 138              		.loc 1 182 22 is_stmt 1 view .LVU42
+ 139              		.loc 1 182 25 is_stmt 0 view .LVU43
+ 140 00ce 022A     		cmp	r2, #2
+ 141 00d0 3AD1     		bne	.L6
+ 183:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x1000UL;
+ 142              		.loc 1 183 21 is_stmt 1 view .LVU44
+ 143              		.loc 1 183 58 is_stmt 0 view .LVU45
+ 144 00d2 2949     		ldr	r1, .L15+4
+ 145              		.loc 1 183 58 view .LVU46
+ 146 00d4 4FF48050 		mov	r0, #4096
+ 147 00d8 C1F81804 		str	r0, [r1, #1048]
+ 148              	.LVL2:
+ 149              		.loc 1 183 58 view .LVU47
+ 150 00dc 34E0     		b	.L6
+ 151              	.LVL3:
+ 152              	.L12:
+ 181:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x20UL;
+ 153              		.loc 1 181 21 is_stmt 1 view .LVU48
+ 181:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x20UL;
+ 154              		.loc 1 181 58 is_stmt 0 view .LVU49
+ 155 00de 2649     		ldr	r1, .L15+4
+ 181:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x20UL;
+ 156              		.loc 1 181 58 view .LVU50
+ 157 00e0 2020     		movs	r0, #32
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 7
+
+
+ 158 00e2 C1F81804 		str	r0, [r1, #1048]
+ 159              	.LVL4:
+ 181:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x20UL;
+ 160              		.loc 1 181 58 view .LVU51
+ 161 00e6 2FE0     		b	.L6
+ 162              	.LVL5:
+ 163              	.L4:
+ 184:Core/Src/main.c **** 
+ 185:Core/Src/main.c ****                 if (step < 3)
+ 186:Core/Src/main.c ****                     step++;
+ 187:Core/Src/main.c ****             }
+ 188:Core/Src/main.c ****             // ===== выключение =====
+ 189:Core/Src/main.c ****             else
+ 190:Core/Src/main.c ****             {
+ 191:Core/Src/main.c ****                 if (step == 0)
+ 164              		.loc 1 191 17 is_stmt 1 view .LVU52
+ 165              		.loc 1 191 26 is_stmt 0 view .LVU53
+ 166 00e8 254A     		ldr	r2, .L15+12
+ 167 00ea 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 168              		.loc 1 191 20 view .LVU54
+ 169 00ec 002A     		cmp	r2, #0
+ 170 00ee 31D1     		bne	.L8
+ 192:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x01000000UL;
+ 171              		.loc 1 192 21 is_stmt 1 view .LVU55
+ 172              		.loc 1 192 58 is_stmt 0 view .LVU56
+ 173 00f0 2149     		ldr	r1, .L15+4
+ 174              		.loc 1 192 58 view .LVU57
+ 175 00f2 4FF08070 		mov	r0, #16777216
+ 176 00f6 C1F81804 		str	r0, [r1, #1048]
+ 177              	.LVL6:
+ 178              	.L9:
+ 193:Core/Src/main.c ****                 else if (step == 1)
+ 194:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x200000UL;
+ 195:Core/Src/main.c ****                 else if (step == 2)
+ 196:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x10000000UL;
+ 197:Core/Src/main.c **** 
+ 198:Core/Src/main.c ****                 if (step < 3)
+ 179              		.loc 1 198 17 is_stmt 1 view .LVU58
+ 180              		.loc 1 198 20 is_stmt 0 view .LVU59
+ 181 00fa 022A     		cmp	r2, #2
+ 182 00fc 02D8     		bhi	.L3
+ 199:Core/Src/main.c ****                     step++;
+ 183              		.loc 1 199 21 is_stmt 1 view .LVU60
+ 184              		.loc 1 199 25 is_stmt 0 view .LVU61
+ 185 00fe 0132     		adds	r2, r2, #1
+ 186 0100 1F49     		ldr	r1, .L15+12
+ 187 0102 0A70     		strb	r2, [r1]
+ 188              	.L3:
+ 200:Core/Src/main.c ****             }
+ 201:Core/Src/main.c ****         }
+ 202:Core/Src/main.c **** 
+ 203:Core/Src/main.c ****         prev_btn1 = btn1;
+ 189              		.loc 1 203 9 is_stmt 1 view .LVU62
+ 190              		.loc 1 203 19 is_stmt 0 view .LVU63
+ 191 0104 1F4A     		ldr	r2, .L15+16
+ 192 0106 1370     		strb	r3, [r2]
+ 193              	.LBE2:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 8
+
+
+ 154:Core/Src/main.c ****     {
+ 194              		.loc 1 154 11 is_stmt 1 view .LVU64
+ 195              	.LVL7:
+ 196              	.L11:
+ 154:Core/Src/main.c ****     {
+ 197              		.loc 1 154 5 view .LVU65
+ 198              	.LBB3:
+ 159:Core/Src/main.c **** 
+ 199              		.loc 1 159 9 view .LVU66
+ 159:Core/Src/main.c **** 
+ 200              		.loc 1 159 25 is_stmt 0 view .LVU67
+ 201 0108 1B4B     		ldr	r3, .L15+4
+ 202 010a D3F81038 		ldr	r3, [r3, #2064]
+ 159:Core/Src/main.c **** 
+ 203              		.loc 1 159 17 view .LVU68
+ 204 010e C3F38012 		ubfx	r2, r3, #6, #1
+ 205              	.LVL8:
+ 161:Core/Src/main.c ****         {
+ 206              		.loc 1 161 9 is_stmt 1 view .LVU69
+ 161:Core/Src/main.c ****         {
+ 207              		.loc 1 161 23 is_stmt 0 view .LVU70
+ 208 0112 1D49     		ldr	r1, .L15+20
+ 209 0114 0978     		ldrb	r1, [r1]	@ zero_extendqisi2
+ 161:Core/Src/main.c ****         {
+ 210              		.loc 1 161 12 view .LVU71
+ 211 0116 0129     		cmp	r1, #1
+ 212 0118 CDD0     		beq	.L13
+ 213              	.L2:
+ 166:Core/Src/main.c **** 
+ 214              		.loc 1 166 9 is_stmt 1 view .LVU72
+ 166:Core/Src/main.c **** 
+ 215              		.loc 1 166 19 is_stmt 0 view .LVU73
+ 216 011a 1B49     		ldr	r1, .L15+20
+ 217 011c 0A70     		strb	r2, [r1]
+ 171:Core/Src/main.c **** 
+ 218              		.loc 1 171 9 is_stmt 1 view .LVU74
+ 171:Core/Src/main.c **** 
+ 219              		.loc 1 171 17 is_stmt 0 view .LVU75
+ 220 011e C3F3C013 		ubfx	r3, r3, #7, #1
+ 221              	.LVL9:
+ 173:Core/Src/main.c ****         {
+ 222              		.loc 1 173 9 is_stmt 1 view .LVU76
+ 173:Core/Src/main.c ****         {
+ 223              		.loc 1 173 23 is_stmt 0 view .LVU77
+ 224 0122 184A     		ldr	r2, .L15+16
+ 225              	.LVL10:
+ 173:Core/Src/main.c ****         {
+ 226              		.loc 1 173 23 view .LVU78
+ 227 0124 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 173:Core/Src/main.c ****         {
+ 228              		.loc 1 173 12 view .LVU79
+ 229 0126 012A     		cmp	r2, #1
+ 230 0128 ECD1     		bne	.L3
+ 173:Core/Src/main.c ****         {
+ 231              		.loc 1 173 28 discriminator 1 view .LVU80
+ 232 012a 002B     		cmp	r3, #0
+ 233 012c EAD1     		bne	.L3
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 9
+
+
+ 176:Core/Src/main.c ****             {
+ 234              		.loc 1 176 13 is_stmt 1 view .LVU81
+ 176:Core/Src/main.c ****             {
+ 235              		.loc 1 176 22 is_stmt 0 view .LVU82
+ 236 012e 134A     		ldr	r2, .L15+8
+ 237 0130 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 176:Core/Src/main.c ****             {
+ 238              		.loc 1 176 16 view .LVU83
+ 239 0132 002A     		cmp	r2, #0
+ 240 0134 D8D1     		bne	.L4
+ 178:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x0100UL;
+ 241              		.loc 1 178 17 is_stmt 1 view .LVU84
+ 178:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x0100UL;
+ 242              		.loc 1 178 26 is_stmt 0 view .LVU85
+ 243 0136 124A     		ldr	r2, .L15+12
+ 244 0138 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 178:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x0100UL;
+ 245              		.loc 1 178 20 view .LVU86
+ 246 013a 002A     		cmp	r2, #0
+ 247 013c C5D1     		bne	.L5
+ 179:Core/Src/main.c ****                 else if (step == 1)
+ 248              		.loc 1 179 21 is_stmt 1 view .LVU87
+ 179:Core/Src/main.c ****                 else if (step == 1)
+ 249              		.loc 1 179 58 is_stmt 0 view .LVU88
+ 250 013e 0E49     		ldr	r1, .L15+4
+ 179:Core/Src/main.c ****                 else if (step == 1)
+ 251              		.loc 1 179 58 view .LVU89
+ 252 0140 4FF48070 		mov	r0, #256
+ 253 0144 C1F81804 		str	r0, [r1, #1048]
+ 254              	.LVL11:
+ 255              	.L6:
+ 185:Core/Src/main.c ****                     step++;
+ 256              		.loc 1 185 17 is_stmt 1 view .LVU90
+ 185:Core/Src/main.c ****                     step++;
+ 257              		.loc 1 185 20 is_stmt 0 view .LVU91
+ 258 0148 022A     		cmp	r2, #2
+ 259 014a DBD8     		bhi	.L3
+ 186:Core/Src/main.c ****             }
+ 260              		.loc 1 186 21 is_stmt 1 view .LVU92
+ 186:Core/Src/main.c ****             }
+ 261              		.loc 1 186 25 is_stmt 0 view .LVU93
+ 262 014c 0132     		adds	r2, r2, #1
+ 263 014e 0C49     		ldr	r1, .L15+12
+ 264 0150 0A70     		strb	r2, [r1]
+ 265 0152 D7E7     		b	.L3
+ 266              	.LVL12:
+ 267              	.L8:
+ 193:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x200000UL;
+ 268              		.loc 1 193 22 is_stmt 1 view .LVU94
+ 193:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x200000UL;
+ 269              		.loc 1 193 25 is_stmt 0 view .LVU95
+ 270 0154 012A     		cmp	r2, #1
+ 271 0156 07D0     		beq	.L14
+ 195:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x10000000UL;
+ 272              		.loc 1 195 22 is_stmt 1 view .LVU96
+ 195:Core/Src/main.c ****                     *(uint32_t *)(0x40020400UL + 0x18UL) = 0x10000000UL;
+ 273              		.loc 1 195 25 is_stmt 0 view .LVU97
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 10
+
+
+ 274 0158 022A     		cmp	r2, #2
+ 275 015a CED1     		bne	.L9
+ 196:Core/Src/main.c **** 
+ 276              		.loc 1 196 21 is_stmt 1 view .LVU98
+ 196:Core/Src/main.c **** 
+ 277              		.loc 1 196 58 is_stmt 0 view .LVU99
+ 278 015c 0649     		ldr	r1, .L15+4
+ 196:Core/Src/main.c **** 
+ 279              		.loc 1 196 58 view .LVU100
+ 280 015e 4FF08050 		mov	r0, #268435456
+ 281 0162 C1F81804 		str	r0, [r1, #1048]
+ 282              	.LVL13:
+ 196:Core/Src/main.c **** 
+ 283              		.loc 1 196 58 view .LVU101
+ 284 0166 C8E7     		b	.L9
+ 285              	.LVL14:
+ 286              	.L14:
+ 194:Core/Src/main.c ****                 else if (step == 2)
+ 287              		.loc 1 194 21 is_stmt 1 view .LVU102
+ 194:Core/Src/main.c ****                 else if (step == 2)
+ 288              		.loc 1 194 58 is_stmt 0 view .LVU103
+ 289 0168 0349     		ldr	r1, .L15+4
+ 194:Core/Src/main.c ****                 else if (step == 2)
+ 290              		.loc 1 194 58 view .LVU104
+ 291 016a 4FF40010 		mov	r0, #2097152
+ 292 016e C1F81804 		str	r0, [r1, #1048]
+ 293              	.LVL15:
+ 194:Core/Src/main.c ****                 else if (step == 2)
+ 294              		.loc 1 194 58 view .LVU105
+ 295 0172 C2E7     		b	.L9
+ 296              	.L16:
+ 297              		.align	2
+ 298              	.L15:
+ 299 0174 00300240 		.word	1073885184
+ 300 0178 00000240 		.word	1073872896
+ 301 017c 00000000 		.word	mode
+ 302 0180 00000000 		.word	step
+ 303 0184 00000000 		.word	prev_btn1
+ 304 0188 00000000 		.word	prev_btn2
+ 305              	.LBE3:
+ 306              		.cfi_endproc
+ 307              	.LFE0:
+ 309              		.global	prev_btn2
+ 310              		.section	.data.prev_btn2,"aw"
+ 313              	prev_btn2:
+ 314 0000 01       		.byte	1
+ 315              		.global	prev_btn1
+ 316              		.section	.data.prev_btn1,"aw"
+ 319              	prev_btn1:
+ 320 0000 01       		.byte	1
+ 321              		.global	step
+ 322              		.section	.bss.step,"aw",%nobits
+ 325              	step:
+ 326 0000 00       		.space	1
+ 327              		.global	mode
+ 328              		.section	.bss.mode,"aw",%nobits
+ 331              	mode:
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 11
+
+
+ 332 0000 00       		.space	1
+ 333              		.text
+ 334              	.Letext0:
+ 335              		.file 2 "C:/Users/Admin/Desktop/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1/arm-none-eabi/include/mac
+ 336              		.file 3 "C:/Users/Admin/Desktop/Tools/xpack-arm-none-eabi-gcc-13.2.1-1.1/arm-none-eabi/include/sys
+ARM GAS  C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:21     .text.main:00000000 $t
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:27     .text.main:00000000 main
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:299    .text.main:00000174 $d
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:331    .bss.mode:00000000 mode
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:325    .bss.step:00000000 step
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:319    .data.prev_btn1:00000000 prev_btn1
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:313    .data.prev_btn2:00000000 prev_btn2
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:326    .bss.step:00000000 $d
+C:\Users\Admin\AppData\Local\Temp\ccgZZf52.s:332    .bss.mode:00000000 $d
+
+NO UNDEFINED SYMBOLS
